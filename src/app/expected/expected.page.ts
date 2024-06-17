@@ -27,7 +27,7 @@ export class ExpectedPage {
     if (this.newUser.name.trim().length > 0) {
       try {
         const addedUser = await this.userService.addUser(this.newUser);
-        this.users.push(addedUser); // Add the newly added user to the users array
+        this.fetchUsers()
         this.newUser = {}; // Reset newUser object
       } catch (error) {
         console.error('Error adding user', error);

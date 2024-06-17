@@ -1,15 +1,22 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Attendance
-    </ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>تسجيل الحضور</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-list>
-    <ion-item *ngFor="let user of users">{{ user.name }} - {{user.latest_attendance ? user.latest_attendance.attendance_date : ''}}
-      <ion-button (click)="attendUser(user)" class="float-end">Fingerprint</ion-button>
+    <ion-list-header>
+      <ion-card-title>قائمة الأشخاص</ion-card-title>
+    </ion-list-header>
+    <ion-item *ngFor="let user of users">
+      <ion-avatar slot="start">
+        <ion-icon name="person-circle" style="font-size: 2em;"></ion-icon>
+      </ion-avatar>
+      <ion-label>{{ user.name }} {{user.latest_attendance ? '- ' + user.latest_attendance.attendance_date : ''}}</ion-label>
+      <ion-button slot="end" :color="user.latest_attendance ? 'success' : 'default' " (click)="attendUser(user)">
+        <ion-icon name="finger-print"></ion-icon>
+      </ion-button>
     </ion-item>
   </ion-list>
 </ion-content>
