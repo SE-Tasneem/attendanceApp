@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Expected User
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item *ngFor="let user of users">{{ user.name }}
+      <ion-button (click)="removeUser(user)" class="float-end">X</ion-button>
+    </ion-item>
+  </ion-list>
+  <ion-item>
+    <ion-input [(ngModel)]="newUser.name" placeholder="Enter new user"></ion-input>
+    <ion-button (click)="addUser()">Add</ion-button>
+  </ion-item>
+
+
+  <!-- <app-explore-container name="Expected page"></app-explore-container> -->
+</ion-content>
