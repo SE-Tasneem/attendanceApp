@@ -12,8 +12,8 @@ const routes: Routes = [
         loadChildren: () => import('../expected/expected.module').then(m => m.ExpectedPageModule)
       },
       {
-        path: 'tab2',
-        loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+        path: 'attendance',
+        loadChildren: () => import('../attendance/attendance.module').then(m => m.AttendancePageModule)
       },
       {
         path: 'tab3',

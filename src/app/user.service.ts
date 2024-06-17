@@ -38,4 +38,13 @@ export class UserService {
       throw error;
     }
   }
+  async markAttendance(userId: string) {
+    try {
+      const response = await axios.post(`${this.apiUrl}/attend/${userId}`);
+      return response.data;
+    } catch (error) {
+      console.error('Error attend user', error);
+      throw error;
+    }
+  }
 }
