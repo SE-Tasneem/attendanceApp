@@ -37,10 +37,11 @@
 @import "@ionic/angular/css/palettes/high-contrast.always.css";
 ion-content {
   direction: rtl !important;
+  font-family: 'droid' !important;
 }
 ion-label {
-  padding: 15px;
-  margin: 15px;
+  padding: 10px;
+  margin: 10px;
 }
 ion-header {
   --background: #3880ff;
@@ -64,4 +65,24 @@ ion-content {
 }
 ion-item {
   --background: #cecbcb;
+}
+.custom-alert .alert-wrapper {
+  text-align: right;
+  direction: rtl;
+  font-family: 'Arial, sans-serif'; /* Use a readable Arabic-friendly font */
+  font-size: 1.2rem; /* Adjust the font size for better readability */
+  color: #333; /* Darker text color for better contrast */
+}
+
+.custom-alert .alert-button {
+  color: #007bff; /* Custom color for the button */
+}
+
+.custom-alert .alert-header {
+  font-weight: bold; /* Bold header for emphasis */
+  margin-bottom: 10px;
+}
+
+.custom-alert .alert-message {
+  margin-bottom: 10px;
 }

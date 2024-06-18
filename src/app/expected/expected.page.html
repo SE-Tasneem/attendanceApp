@@ -28,8 +28,8 @@
         <ion-icon name="person-circle" style="font-size: 2em;"></ion-icon>
       </ion-avatar>
       <ion-label>{{ user.name }}</ion-label>
-      <ion-button slot="end" color="danger" (click)="removeUser(user)">
-        <ion-icon name="close-circle"></ion-icon>
+      <ion-button slot="end" fill="clear" class="btn-close" (click)="removeUser(user)">
+        <ion-icon name="close-circle" color="danger"></ion-icon>
       </ion-button>
     </ion-item>
   </ion-list>

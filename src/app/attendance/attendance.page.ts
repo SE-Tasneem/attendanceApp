@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { UserService } from '../user.service';
 import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
+import { AlertController } from '@ionic/angular';
+import * as moment from 'moment';
+import 'moment/locale/ar';
 
 @Component({
   selector: 'app-attendance',
@@ -11,7 +14,7 @@ export class AttendancePage {
 
   users: any[] = [];
   attendedUser: any = {}
-  constructor(private faio: FingerprintAIO, private userService: UserService) { }
+  constructor(private faio: FingerprintAIO, private userService: UserService, private alertController: AlertController) { }
 
   ngOnInit() {
     this.fetchUsers();
@@ -27,13 +30,40 @@ export class AttendancePage {
       console.error('Error fetching users', error);
     }
   }
-  async attendUser(user: any) {
-    try {
-      await this.userService.markAttendance(user.id);
-      this.fetchUsers()
-    } catch (error) {
-      console.error('Error removing user', error);
-    }
+  async confirmAction(user: any) {
+    moment.locale('ar');
+
+    // Get the current weekday in Arabic
+    const weekday = moment().format('dddd');
+    const alert = await this.alertController.create({
+      header: `حضور ${user.name} !`,
+      message: `يوم ${weekday} ${moment().format('Y-m-d')} الساعة${moment().format('HH:MM')}`,
+      cssClass: 'custom-alert'git add .
+      ,
+      buttons: [
+        {
+          text: 'إلغاء',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Confirm Cancel');
+          }
+        }, {
+          text: 'تأكيد',
+          handler: async () => {
+            try {
+              const response = await this.userService.markAttendance(user.id);
+              this.fetchUsers()
+              console.log('Data sent successfully:', response);
+            } catch (error) {
+              console.error('Error sending data:', error);
+            }
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
   async markAttendance(user: any) {
     try {
