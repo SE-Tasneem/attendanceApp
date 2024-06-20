@@ -40,8 +40,8 @@ ion-content {
   font-family: 'droid' !important;
 }
 ion-label {
-  padding: 10px;
-  margin: 10px;
+  // padding: 1px;
+  // margin: 10px;
 }
 ion-header {
   --background: #3880ff;
@@ -63,7 +63,7 @@ ion-title {
 ion-content {
   --background: #f4f4f4;
 }
-ion-item {
+ion-row {
   --background: #cecbcb;
 }
 .custom-alert .alert-wrapper {

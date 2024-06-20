@@ -38,8 +38,7 @@ export class AttendancePage {
     const alert = await this.alertController.create({
       header: `حضور ${user.name} !`,
       message: `يوم ${weekday} ${moment().format('Y-m-d')} الساعة${moment().format('HH:MM')}`,
-      cssClass: 'custom-alert'git add .
-      ,
+      cssClass: 'custom-alert',
       buttons: [
         {
           text: 'إلغاء',
