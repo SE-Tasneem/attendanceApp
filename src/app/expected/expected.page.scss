@@ -1,6 +1,16 @@
-.float-end {
-  float: right;
-  text-align: right;
+.input-row {
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.input-field {
+  flex: 1;
+  margin-right: 0.5rem;
+}
+
+.add-button {
+  margin-left: 0;
 }
 .user-row {
   display: flex;
@@ -30,4 +40,13 @@
   text-align: right;
   padding: 0px;
 }
-
+.icon-button {
+  --padding-start: 0;
+  --padding-end: 5px;
+  --padding-top: 0;
+  --padding-bottom: 0;
+  --border-radius: 0;
+}
+button {
+  padding: 0px;
+}
