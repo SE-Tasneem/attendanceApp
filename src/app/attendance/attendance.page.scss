@@ -1,10 +1,38 @@
-ion-item {
-  margin-bottom: 5px;
+.user-row {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin: 2px 0.5rem 1rem 0.5rem;
+  padding: 0.1rem;
+  background-color: #dfe0e185;
 }
 
-ion-button {
-  --border-radius: 20px;
-  margin-top: 5px;
-  font-size: 1.5rem;
+.icon-col {
+  padding-right: 0.1rem; /* Adjust this value to move the icon closer/further */
 }
 
+.user-icon {
+  font-size: 2em;
+}
+.close-icon {
+  font-size: 2.3em;
+}
+.name-col {
+  flex: 1;
+}
+
+.button-col {
+  text-align: right;
+  padding: 0px;
+}
+.icon-button {
+  --padding-start: 0;
+  --padding-end: 5px;
+  --padding-top: 0;
+  --padding-bottom: 0;
+  --border-radius: 0;
+}
+button {
+  padding: 0px;
+}

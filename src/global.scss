@@ -35,9 +35,13 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/high-contrast.always.css";
+
+html {
+  --ion-font-family: 'Cairo', sans-serif;
+}
+
 ion-content {
   direction: rtl !important;
-  font-family: 'droid' !important;
 }
 ion-label {
   // padding: 1px;

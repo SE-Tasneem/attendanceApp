@@ -32,37 +32,38 @@ export class AttendancePage {
   }
   async confirmAction(user: any) {
     moment.locale('ar');
-
-    // Get the current weekday in Arabic
-    const weekday = moment().format('dddd');
-    const alert = await this.alertController.create({
-      header: `حضور ${user.name} !`,
-      message: `يوم ${weekday} ${moment().format('Y-m-d')} الساعة${moment().format('HH:MM')}`,
-      cssClass: 'custom-alert',
-      buttons: [
-        {
-          text: 'إلغاء',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: () => {
-            console.log('Confirm Cancel');
-          }
-        }, {
-          text: 'تأكيد',
-          handler: async () => {
-            try {
-              const response = await this.userService.markAttendance(user.id);
-              this.fetchUsers()
-              console.log('Data sent successfully:', response);
-            } catch (error) {
-              console.error('Error sending data:', error);
+    if (!user.latest_attendance || user.latest_attendance == 'undefind' || user.latest_attendance == null) {
+      // Get the current weekday in Arabic
+      const weekday = moment().format('dddd');
+      const alert = await this.alertController.create({
+        header: `حضور ${user.name} !`,
+        message: `يوم ${weekday} ${moment().format('Y-MM-DD')} الساعة${moment().format('HH:MM')}`,
+        cssClass: 'custom-alert',
+        buttons: [
+          {
+            text: 'إلغاء',
+            role: 'cancel',
+            cssClass: 'secondary',
+            handler: () => {
+              console.log('Confirm Cancel');
+            }
+          }, {
+            text: 'تأكيد',
+            handler: async () => {
+              try {
+                const response = await this.userService.markAttendance(user.id);
+                this.fetchUsers()
+                console.log('Data sent successfully:', response);
+              } catch (error) {
+                console.error('Error sending data:', error);
+              }
             }
           }
-        }
-      ]
-    });
+        ]
+      });
 
-    await alert.present();
+      await alert.present();
+    }
   }
   async markAttendance(user: any) {
     try {
