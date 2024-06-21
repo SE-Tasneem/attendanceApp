@@ -20,6 +20,16 @@ export class UserService {
       throw error;
     }
   }
+  async getUsersReport() {
+    try {
+      const response = await axios.get(`${this.apiUrl}-attendance-report`);
+      console.log('users', response.data)
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching users', error);
+      throw error;
+    }
+  }
   async addUser(user: any) {
     try {
       const response = await axios.post(this.apiUrl, user);
