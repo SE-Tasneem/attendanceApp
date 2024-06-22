@@ -6,7 +6,7 @@ import axios from 'axios';
 })
 export class UserService {
 
-  private apiUrl = 'http://localhost:8000/api/v1/users'; // Replace with your API URL
+  private apiUrl = 'http://localhost:800/api/v1/users'; // Replace with your API URL
 
   constructor() { }
 
@@ -17,7 +17,14 @@ export class UserService {
       return response.data;
     } catch (error) {
       console.error('Error fetching users', error);
-      throw error;
+      // throw error;
+      return [
+        {"id":1,"name":"Tasneem","created_at":"2024-06-17T04:48:11.000000Z","updated_at":"2024-06-17T04:48:11.000000Z"},
+        {"id":2,"name":"Ah","created_at":"2024-06-17T04:48:51.000000Z","updated_at":"2024-06-17T04:48:51.000000Z"},
+        {"id":4,"name":"test","created_at":"2024-06-17T05:04:35.000000Z","updated_at":"2024-06-17T05:04:35.000000Z"},
+        {"id":6,"name":"Tasneem Hamed","created_at":"2024-06-17T09:58:17.000000Z","updated_at":"2024-06-17T09:58:17.000000Z"}
+      ]
+
     }
   }
   async getUsersReport() {

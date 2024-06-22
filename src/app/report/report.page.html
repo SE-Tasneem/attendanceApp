@@ -7,24 +7,34 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-list-header class="header">
+    <ion-card-title>شهر {{month}}</ion-card-title>
+  </ion-list-header>
   <ion-accordion-group>
-    <ion-accordion value="first">
+    <ion-accordion *ngFor="let user of users" [value]="user.created_at">
       <ion-item slot="header" color="light">
-        <ion-label>First Accordion</ion-label>
+        <ion-row class="date-row" align-items-center>
+          <ion-col size="auto" class="icon-col">
+            <ion-icon name="calendar" class="user-icon"></ion-icon>
+          </ion-col>
+          <ion-col class="name-col">
+            <ion-label>{{ user.created_at }}</ion-label>
+          </ion-col>
+        </ion-row>
       </ion-item>
-      <div class="ion-padding" slot="content">First Content</div>
-    </ion-accordion>
-    <ion-accordion value="second">
-      <ion-item slot="header" color="light">
-        <ion-label>Second Accordion</ion-label>
-      </ion-item>
-      <div class="ion-padding" slot="content">Second Content</div>
-    </ion-accordion>
-    <ion-accordion value="third">
-      <ion-item slot="header" color="light">
-        <ion-label>Third Accordion</ion-label>
-      </ion-item>
-      <div class="ion-padding" slot="content">Third Content</div>
+      <div class="ion-padding" slot="content">
+        <ion-row *ngFor="let item of user.users" class="user-row" align-items-center>
+          <ion-col class="name-col">
+            <ion-label>{{ item.user.name }}</ion-label>
+          </ion-col>
+          <ion-col size="auto" class="icon-col">
+            <ion-icon name="time" class="user-icon"></ion-icon>
+          </ion-col>
+          <ion-col size="auto" class="button-col">
+            <ion-label>{{ item.attendance_time }}</ion-label>
+          </ion-col>
+        </ion-row>
+      </div>
     </ion-accordion>
   </ion-accordion-group>
 </ion-content>

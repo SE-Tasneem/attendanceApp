@@ -1,0 +1,19 @@
+.user-icon {
+  font-size: 2em;
+}
+.name-col {
+  flex: 1;
+}
+.user-row {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  // margin: 2px 0.5rem 1rem 0.5rem;
+  padding: 0.1rem 0.3rem;
+  color: #fff;
+  background-color: #5a5b5c;
+}
+.header {
+  margin-top: 0.6rem;
+  margin-bottom: 0.6rem;
+}
