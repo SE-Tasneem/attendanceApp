@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { UserService } from '../user.service';
-import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
 import { AlertController } from '@ionic/angular';
 import * as moment from 'moment';
 import 'moment/locale/ar';
@@ -14,7 +13,7 @@ export class AttendancePage {
 
   users: any[] = [];
   attendedUser: any = {}
-  constructor(private faio: FingerprintAIO, private userService: UserService, private alertController: AlertController) { }
+  constructor( private userService: UserService, private alertController: AlertController) { }
 
   ngOnInit() {
     this.fetchUsers();
@@ -63,26 +62,6 @@ export class AttendancePage {
       });
 
       await alert.present();
-    }
-  }
-  async markAttendance(user: any) {
-    try {
-      const available = await this.faio.isAvailable();
-      if (available) {
-        const result = await this.faio.show({
-          title: 'Biometric Authentication',
-          subtitle: 'Place your finger on the sensor',
-          description: 'Please authenticate',
-          fallbackButtonTitle: 'Use Backup',
-        });
-        if (result) {
-          const userId = 'user-id-from-authenticated-session'; // Replace with actual user ID
-          await this.userService.markAttendance(userId);
-          console.log('Attendance marked successfully');
-        }
-      }
-    } catch (error) {
-      console.error('Error during fingerprint authentication', error);
     }
   }
 }
